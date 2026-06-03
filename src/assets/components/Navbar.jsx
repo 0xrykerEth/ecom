@@ -18,10 +18,10 @@ const Navbar = () => {
             {showCart && <Cart onClose={() => setShowCart(false)} />}
             <div className="navbar">
                 <div className="texts">
-                    <p>Home</p>
-                    <p>Store</p>
-                    <p>About</p>
-            </div>
+                    <a href="/">Home</a>
+                    <a href="/Store">Store</a>
+                    <a href="/About">About</a>
+                </div>
 
             <button className="cart-btn" onClick={modelHandler}>
                     🛒 Cart

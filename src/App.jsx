@@ -1,19 +1,24 @@
 import React from "react";
-import Navbar from "./assets/components/Navbar";
-import StoreName from "./assets/components/StoreName";
-import Album from "./assets/components/Album";
+import StoreRoute from "./Pages/StoreRoute";
+import About from "./Pages/About";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
+const router = createBrowserRouter([
+  {
+    path: "/Store",
+    element: <StoreRoute />
+  },
+  {
+    path : "/About",
+    element : <About />
+  }
+]);
 
 function App() {
   
 
   return (
-    <React.Fragment>
-      <Navbar />
-      <StoreName />
-      <Album />
-      
-    </React.Fragment>
+    <RouterProvider router={router} />  
   )
 }
 

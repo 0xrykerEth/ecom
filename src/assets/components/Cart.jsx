@@ -5,8 +5,9 @@ import { AppContext } from './Context';
 
 const Cart = ({onClose}) => {
     const ctrx = useContext(AppContext);
+
      const total = ctrx.item.reduce((sum, item) => {
-        return sum + item.price;
+        return sum + (item.price * item.quantity);
     }, 0);
 
     return(
@@ -25,12 +26,15 @@ const Cart = ({onClose}) => {
                         <li key={item.id}>
                             <span>{item.title} </span>
                             <span>Quantity: {item.quantity} </span>
-                            <span>${item.price.toFixed(2)}</span>
-                            <button onClick={() => ctrx.removeItem(item.id)}>Remove</button>
+                            <span>${(item.price * item.quantity).toFixed(2)}</span>
+                            <button onClick={() => ctrx.addItem(item)}>+</button>
+                            <button onClick={() => ctrx.removeItem(item.id)}>-</button>
+                            
                         </li>
                     ))}
                 </ul>
                     <h3>Total: ${total.toFixed(2)}</h3>
+                    <button onClick={() => ctrx.removeAll()}>Remove All</button>
                 </>
             )}
         </div>

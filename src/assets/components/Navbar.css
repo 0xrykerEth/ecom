@@ -17,10 +17,11 @@
     justify-content: center;
 }
 
-.texts p {
+.texts a {
     margin: 0;
     cursor: pointer;
     font-size: 25px;
+    color: white;
 }
 
 .cart {

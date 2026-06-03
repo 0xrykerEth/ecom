@@ -25,8 +25,24 @@ const AppProvider = ({children}) => {
 
     }
 
+    const removeItem = (id) => {
+        const foundItem = item.find(item => item.id === id);
+        if(foundItem){
+            if(foundItem.quantity > 1){
+                foundItem.quantity -= 1;
+                setItem([...item]);
+            }else{
+                setItem(item.filter(i => i.id !== id));
+            }
+        }
+    }
+
+    const removeAll = () => {
+        setItem([]);
+    }
+
     return (
-        <AppContext.Provider value={{item,addItem ,removeItem : (id) => setItem(item.filter((i) => i.id !== id))}}>
+        <AppContext.Provider value={{item,addItem ,removeItem,removeAll}}>
             {children}
         </AppContext.Provider>
     )
