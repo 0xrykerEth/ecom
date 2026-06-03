@@ -1,0 +1,41 @@
+.tour {
+    width: 70%;
+    margin: 50px auto;
+}
+
+.tour-card {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #999;
+}
+
+.tour-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tour-card p:nth-child(1) {
+    width: 100px;
+    font-weight: bold;
+}
+
+.tour-card p:nth-child(2) {
+    width: 200px;
+    color: #777;
+}
+
+.tour-card p:nth-child(3) {
+    flex: 1;
+    color: #777;
+}
+
+.tour-card button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    background: #56c4e9;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

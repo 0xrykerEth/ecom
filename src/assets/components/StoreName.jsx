@@ -1,9 +1,12 @@
 import './store.css';
 
-const StoreName = () => {
+const StoreName = ({children}) => {
     return (
         <div className="store">
-            <h1>The Generics</h1>
+            <div className="store-name">
+                <h1>The Generics</h1>
+            </div>
+            {children}
         </div>
     )
 }

@@ -18,7 +18,7 @@ const Navbar = () => {
             {showCart && <Cart onClose={() => setShowCart(false)} />}
             <div className="navbar">
                 <div className="texts">
-                    <a href="/">Home</a>
+                    <a href="/Home">Home</a>
                     <a href="/Store">Store</a>
                     <a href="/About">About</a>
                 </div>
