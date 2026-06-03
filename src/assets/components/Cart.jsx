@@ -24,6 +24,7 @@ const Cart = ({onClose}) => {
                         {ctrx.item.map((item) => (
                         <li key={item.id}>
                             <span>{item.title} </span>
+                            <span>Quantity: {item.quantity} </span>
                             <span>${item.price.toFixed(2)}</span>
                             <button onClick={() => ctrx.removeItem(item.id)}>Remove</button>
                         </li>
