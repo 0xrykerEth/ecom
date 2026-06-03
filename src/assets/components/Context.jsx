@@ -1,5 +1,5 @@
 import React from 'react'
-import { createContext,useState} from 'react'
+import { createContext,useState,useEffect} from 'react'
 
 const AppContext = React.createContext({
     item : [],
@@ -9,7 +9,18 @@ const AppContext = React.createContext({
 
 
 const AppProvider = ({children}) => {
-    const [item,setItem] = useState([]);
+    const [item,setItem] = useState(() => {
+        const storedItems = localStorage.getItem('cartItems');
+         if (storedItems) {
+            return JSON.parse(storedItems);
+        }
+
+        return [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(item));
+    }, [item]);
 
     const addItem = (newItem) => {
 
