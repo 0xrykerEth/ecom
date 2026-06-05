@@ -21,6 +21,7 @@ const Navbar = () => {
                     <a href="/Home">Home</a>
                     <a href="/Store">Store</a>
                     <a href="/About">About</a>
+                    <a href="/Contact">Contact</a>
                 </div>
 
             <button className="cart-btn" onClick={modelHandler}>

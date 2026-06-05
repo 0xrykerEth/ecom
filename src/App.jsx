@@ -2,6 +2,7 @@ import React from "react";
 import StoreRoute from "./Pages/StoreRoute";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -15,6 +16,9 @@ const router = createBrowserRouter([
   },{
     path : "/Home",
     element : <Home />
+  },{
+    path: '/Contact',
+    element : <Contact/>
   }
 ]);
 
