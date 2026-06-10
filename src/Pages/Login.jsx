@@ -1,6 +1,6 @@
 import React from "react";
-import Auth from "../assets/Components/Auth";
-import Navbar from "../assets/Components/Navbar";
+import Auth from "../assets/components/Auth";
+import Navbar from "../assets/components/Navbar";
 
 const Login = () => {
     return (

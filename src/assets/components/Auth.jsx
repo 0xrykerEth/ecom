@@ -1,20 +1,26 @@
 import { useState, useRef, useContext } from 'react';
 import AuthContext from './auth-store';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import classes from './AuthForm.module.css';
 
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [didLogin, setDidLogin] = useState(false);
   const inputEmail = useRef();
   const inputPassword = useRef();
-  const navigate = useNavigate();
   const [request,setRequest] = useState(false);
 
   const authCtrx = useContext(AuthContext);
 
+  console.log('Auth component - authCtrx:', authCtrx);
+  console.log('Auth component - authCtrx.login:', authCtrx.login);
+
+  if (didLogin) {
+    return <Navigate to="/Home" replace />;
+  }
+
   const switchAuthModeHandler = () => {
-    
     setIsLogin((prevState) => !prevState);
   };
   const formHandler = async (e) => {
@@ -52,14 +58,18 @@ const Auth = () => {
     });
 
     const data = await response.json();
-    const expiryTime = Date.now() + (1 * 60 * 1000);
-    localStorage.setItem('expiryTime',expiryTime);
 
     if (!response.ok) {
       throw new Error(data.error.message);
     }
+
+    const expiryTime = Date.now() + 10 * 60 * 1000;
+    localStorage.setItem('expiryTime', expiryTime);
+    console.log('About to call authCtrx.login with token:', data.idToken);
     authCtrx.login(data.idToken);
-    navigate('/Home', { replace: true });
+    console.log('After authCtrx.login, about to set didLogin');
+    setDidLogin(true);
+    console.log('didLogin set to true');
     console.log(data);
   } catch (err) {
     alert(err.message);
@@ -76,7 +86,7 @@ const Auth = () => {
       <form onSubmit={formHandler}>
         <div className={classes.control}>
           <label htmlFor='email'>Your Email</label>
-          <input type='email' id='email' ref={inputEmail}/>
+          <input type='email' id='email' ref={inputEmail} autoComplete='email' />
         </div>
         <div className={classes.control}>
           <label htmlFor='password'>Your Password</label>
@@ -84,6 +94,7 @@ const Auth = () => {
             type='password'
             id='password'
             ref={inputPassword}
+            autoComplete='current-password'
           />
         </div>
         <div className={classes.actions}>

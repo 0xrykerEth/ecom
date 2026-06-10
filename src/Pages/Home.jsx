@@ -1,7 +1,7 @@
-import Navbar from "../assets/Components/Navbar";
-import StoreName from "../assets/Components/StoreName";
-import Footer from "../assets/Components/Footer";
-import Tour from "../assets/Components/Tour";
+import Navbar from "../assets/components/Navbar";
+import StoreName from "../assets/components/StoreName";
+import Footer from "../assets/components/Footer";
+import Tour from "../assets/components/Tour";
 import React from "react";
 import "./Home.css";
 

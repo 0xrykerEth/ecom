@@ -1,6 +1,7 @@
 import "./Navbar.css";
 import {useContext} from "react";
 import {AppContext} from "./Context";
+import AuthContext from "./auth-store";
 import Cart from "./Cart";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,15 +9,17 @@ import PillNav from "./PillNav";
 import logoImg from "../par.png";
 
 
+
 const navLinks = [
   { text: "Home Page", path: "/Home" },
-  { text: "Store", path: "/store" },
+  { text: "Store", path: "/Store" },
   { text: "About", path: "/About" },
   { text: "Contact", path: "/Contact" }
 ];
 
 const Navbar = () => {
-    const ctrx = useContext(AppContext);
+    const appCtx = useContext(AppContext);
+    const authCtx = useContext(AuthContext);
     const [showCart,setShowCart] = useState(false);
 
     const modelHandler = () => {
@@ -50,11 +53,18 @@ const Navbar = () => {
                         />
                 </div>
 
-            <button className="cart-btn" onClick={modelHandler}>
+            <div className="navbar-actions">
+                <button className="cart-btn" onClick={modelHandler}>
                     🛒 Cart
-                    <span className="cart-count">{ctrx.item.length}</span>
+                    <span className="cart-count">{appCtx.item.length}</span>
                 </button>
+                {authCtx.isLoggedIn && (
+                    <button className="logout-btn" onClick={authCtx.logOut}>
+                        Log Out
+                    </button>
+                )}
             </div>
+        </div>
         </>
     )
 }
