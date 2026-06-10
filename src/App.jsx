@@ -5,6 +5,8 @@ import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
+import Login from "./Pages/Login";
+
 const router = createBrowserRouter([
   {
     path: "/Store",
@@ -19,6 +21,9 @@ const router = createBrowserRouter([
   },{
     path: '/Contact',
     element : <Contact/>
+  },{
+    path : '/Auth',
+    element : <Login/>
   }
 ]);
 
